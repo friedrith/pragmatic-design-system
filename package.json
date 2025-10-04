@@ -1,0 +1,7 @@
+{
+  "name": "talk-template",
+  "scripts": {
+    "slides": "cd slides ; pnpm dev",
+    "demo": "cd demo ; pnpm dev"
+  }
+}

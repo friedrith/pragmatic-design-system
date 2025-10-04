@@ -1,0 +1,7 @@
+{
+  "name": "demo",
+  "scripts": {
+    "dev": "echo 'demo'",
+    "build": "mkdir ../.dist echo 'building'"
+  }
+}
