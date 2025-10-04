@@ -1,23 +1,15 @@
 <div align="center">
   <h3 text-align="center">
-    %TITLE%
+      Pragmatic Design System
   </h3>
   <p align="center">
-    <a href="https://friedrith.github.io/react-composition">Demo</a> | 
-    <a href="https://friedrith.github.io/react-composition/slides">Slides</a> | 
-    <a href="https://thibault-friedrich.medium.com/keep-your-react-components-maintainable-with-solid-react-composition-codecraftsmanship-4-2969834e9ffa">Article</a>
+    <a href="https://friedrith.github.io/pragmatic-design-system">Demo</a> |
+    <a href="https://friedrith.github.io/pragmatic-design-system/slides">Slides</a> |
+    <!--<a href="https://thibault-friedrich.medium.com/keep-your-react-components-maintainable-with-solid-react-composition-codecraftsmanship-4-2969834e9ffa">Article</a>-->
   </p>
 
   <img src=".assets/screenshot.svg" alt="Screenshot" height="300" />
 </div>
-
-## Introduction (to remove when you use this template)
-
-This is a template for a talk. It uses [slidev](https://sli.dev/).
-
-> You can check [https://github.com/friedrith/react-composition](https://github.com/friedrith/react-composition) as an example.
-
-Read the file [GETTING_STARTED.md](./GETTING_STARTED.md) to know how to use this template.
 
 ## Getting started
 
