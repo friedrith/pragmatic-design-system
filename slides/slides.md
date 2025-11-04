@@ -5,7 +5,7 @@ theme: seriph
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://cover.sli.dev
 # some information about your slides (markdown enabled)
-title: __TITLE__
+title: Pragmatic Design System
 info: |
   ## Slidev Starter Template
   Presentation slides for developers.
@@ -22,7 +22,58 @@ transition: slide-left
 mdc: true
 ---
 
-# __TITLE__
+# Pragmatic Design System
+
+What is a design system?
+
+A collection of:
+
+- standards and guidelines
+- style guide 
+- reusable components
+
+In large size organization: maintained by a team of designers and developers.
+
+What happened in organizations without this team?
+
+Enforce design system by the code, ie the components.
+
+The component will be your guideline.
+
+But in the same time, you know that since there is no strong component vision, you will have a lot of variants and you need to give flexibility.
+
+> Ironically, it is easier to follow a design system in a company without designers than in a company with designers who are not in charge of the design system.
+
+Today we will go through a list of baby steps to help you architecture your design system if you don't have a strong design system team.
+
+
+- use a library: shadcn/ui, mui, etc
+
+
+
+Adoption of the design system
+
+- atomic design -> in reality doesn't work
+
+- tokens / theme
+- components
+
+
+- a generic design system doesn't exist
+
+
+- generic components (atoms)
+- business specific components (molecules)
+- logic specific components (organisms)
+
+
+- render props hook pattern
+- slots and slotProps
+- React slots patterns
+- context override
+
+
+
 
 Presentation slides for developers
 

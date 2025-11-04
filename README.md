@@ -4,7 +4,7 @@
   </h3>
   <p align="center">
     <a href="https://friedrith.github.io/pragmatic-design-system">Demo</a> |
-    <a href="https://friedrith.github.io/pragmatic-design-system/slides">Slides</a> |
+    <a href="https://friedrith.github.io/pragmatic-design-system/slides">Slides</a>
     <!--<a href="https://thibault-friedrich.medium.com/keep-your-react-components-maintainable-with-solid-react-composition-codecraftsmanship-4-2969834e9ffa">Article</a>-->
   </p>
 
