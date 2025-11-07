@@ -1,11 +1,16 @@
 import "./App.css";
+import { HashRouter, Link, Navigate, Route, Routes } from "react-router-dom";
+
 import * as Composition from "./01-composition";
 import * as RenderFunctionProps from "./02-render-function-props";
 import * as RenderComponentProps from "./03-render-component-props";
 import * as RenderPropsHook from "./04-render-props-hook";
 import * as ReactSlotsPatterns from "./05-react-slots-patterns";
+import { getPageUrl } from "./utils/get-page-url";
+import { Layout } from "./utils/Layout";
+import { Page } from "./utils/Page";
 
-const examples = [
+const routes = [
 	Composition,
 	RenderFunctionProps,
 	RenderComponentProps,
@@ -15,16 +20,26 @@ const examples = [
 
 function App() {
 	return (
-		<div className="neumorphism">
-			<h1>Pragmatic Design System</h1>
-			<div className="flex flex-col gap-10 items-center">
-				{examples.map((example) => (
-					<div key={example.title}>
-						<h2>{example.title}</h2>
-						<example.Example />
-					</div>
-				))}
-			</div>
+		<div className="app">
+			<HashRouter>
+				<Page routes={routes.map((r) => r.title)}>
+					<Routes>
+						{routes.map(({ title, Example }) => (
+							<Route
+								key={title}
+								path={getPageUrl(title)}
+								element={<Layout title={title} component={Example} />}
+							/>
+						))}
+						<Route
+							path="*"
+							element={
+								<Navigate to={getPageUrl(routes[0].title)} replace={true} />
+							}
+						/>
+					</Routes>
+				</Page>
+			</HashRouter>
 		</div>
 	);
 }

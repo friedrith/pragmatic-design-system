@@ -160,7 +160,7 @@ if (isFeatureAEnabled()) {
 
 ---
 layout: cool-demo
-url: https://friedrith.github.io/react-composition/#/validity-indicator?demo=1
+url: http://localhost:5173/#/composition?demo=1
 ---
 
 ## Composition
