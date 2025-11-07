@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+#root {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 2rem;
+	text-align: center;
+}
+
+@layer components {
+
+    .start-decorator {
+      @apply flex items-center me-3;
+    }
+
+   .end-decorator {
+     @apply flex items-center ms-3;
+   }
+
+   .container {
+     @apply relative max-w-full h-full w-full flex items-center justify-center flex-col;
+   }
+
+   .title {
+     @apply text-2xl font-semibold leading-6 text-gray-900 mb-10;
+   }
+
+   .stack {
+     @apply flex space-x-2
+   }
+
+   .indicator {
+     @apply stroke-[4px] text-black	;
+   }
+
+   .button {
+     @apply h-8 w-8 flex items-center cursor-pointer;
+   }
+
+
+   .navigation-button {
+     @apply transition-all rounded-full;
+   }
+
+   .navigation-button.active {
+     background: var(--background);
+     box-shadow: inset 2px 2px 5px #bebebe,
+                 inset -2px -2px 5px #ffffff;
+   }
+
+   .navigation-button:not(.active) {
+     background: linear-gradient(145deg, #f0f0f0, #cacaca);
+     box-shadow:  2px 2px 5px #bebebe,
+                 -2px -2px 5px #ffffff;
+   }
+
+   .neumorphism #app {
+     background: var(--background);
+   }
+
+   .neumorphism .input-container {
+     border-radius: 20px;
+     background: var(--background);
+     border: none;
+     box-shadow: inset 4px 4px 8px #bebebe,
+                 inset -4px -4px 8px #ffffff;
+
+     @apply flex items-stretch w-80 relative px-6;
+   }
+
+   .neumorphism .input {
+     background: transparent;
+     outline: none;
+     @apply border-0 py-5 flex-1;
+   }
+
+   .neumorphism .input-container:has(input:focus) {
+     box-shadow: inset 6px 6px 12px #bebebe,
+                 inset -6px -6px 12px #ffffff;
+   }
+
+   .neumorphism .button {
+     display: inline-flex;
+
+     background: var(--background);
+     box-shadow:  5px 5px 10px #bebebe,
+                 -5px -5px 10px #ffffff;
+
+     @apply rounded-full;
+   }
+
+   .neumorphism .keybinding {
+     display: inline-flex;
+
+     background: var(--background);
+     box-shadow:  5px 5px 10px #bebebe,
+                 -5px -5px 10px #ffffff;
+
+     @apply rounded-full px-1;
+   }
+
+   .neumorphism .button:active {
+     background: linear-gradient(145deg, #cacaca, #f0f0f0);
+   }
+
+   .neumorphism .end-decorator {
+     @apply inset-y-2;
+   }
+
+   .neumorphism .start-decorator {
+     @apply flex flex-row items-center inset-y-2;
+   }
+
+ }

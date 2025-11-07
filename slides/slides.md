@@ -17,43 +17,117 @@ class: text-center
 drawings:
   persist: false
 # slide transition: https://sli.dev/guide/animations.html#slide-transitions
-transition: slide-left
+transition: slide-up
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
 ---
 
 # Pragmatic Design System
 
-What is a design system?
+## How to organize your design system components without a strong design vision
 
-A collection of:
+Thibault Friedrich
+
+---
+
+## What is a design system?
 
 - standards and guidelines
-- style guide 
-- reusable components
+- style guide
+- **reusable components**
 
-In large size organization: maintained by a team of designers and developers.
+This design system has 2 parts:
 
-What happened in organizations without this team?
+- **Design**
+- **Development**
 
-Enforce design system by the code, ie the components.
+It is very helpful when you want to have a consistent user experience. It also helps developers to build features faster.
 
-The component will be your guideline.
+In small companies, you use an existing design system. But in larger organizations you build your own design system because you have specific needs (on the top of an existing one).
 
-But in the same time, you know that since there is no strong component vision, you will have a lot of variants and you need to give flexibility.
+---
 
-> Ironically, it is easier to follow a design system in a company without designers than in a company with designers who are not in charge of the design system.
+## In the ideal world
 
-Today we will go through a list of baby steps to help you architecture your design system if you don't have a strong design system team.
+You have a strong design system team that can create a strong design system.
+
+They have a vision so when you build the components, you know what they should include.
+
+A design system team includes:
+
+- designers
+- frontend developers
+- accessibility experts
+
+But what happens if you don't have a strong design system team?
+
+---
+
+## For example
+
+Multiple variants of the same component.
+
+---
 
 
-- use a library: shadcn/ui, mui, etc
+## In the real world
+
+You have only few designers. They cannot support and maintain this design system. They only design mockups for the incoming features.
+
+So as developers, you have to build the design system yourself.
+
+You will skip the standards and guidelines.
+
+You might extract the style guide from features mockups.
+
+But you are alone on the components.
+
+You have to build the components without knowing what will be needed in the future.
+
+So you need to make them flexible. But in the same time you need to enforce some constraints to maintain some consistency.
+
+-> That's a pragmatic design system.
+
+We will go through a list of baby steps to have a pragmatic design system.
+
+---
+
+## Reuse an existing base:
+
+Mui or Shadcn/ui
+
+It will give a good starting point and a structure for your themes and some base components.
+
+
+---
+
+## Atomic Design
+
+- atoms
+- molecules
+- organisms
+- templates
+- pages
+
+Cool in theory. In practice, adapt it to your needs.
+
+---
+
+## React patterns
+
+Today we will focus on the React patterns to make your design system components reusable, flexible but not too much.
+
+- atoms: ui, no domain specific, no logic, allow infinite variants (UI)
+- molecules: ui, more complex, often domain specific, no logic, allow infinite variants
+- organisms: no ui, logic, one main variant, customizable (only )
+
+
 
 
 
 Adoption of the design system
 
-- atomic design -> in reality doesn't work
+- atomic design
 
 - tokens / theme
 - components
@@ -64,12 +138,18 @@ Adoption of the design system
 
 - generic components (atoms)
 - business specific components (molecules)
-- logic specific components (organisms)
+- businss logic specific components (organisms)
+
+Change of paradigm between molecules and organisms. Molecules are generic without logic. Organisms have integrated logic that can be customized.
 
 
+- composition
+  - inversion of control
+  - but sometimes, we need to limit of the inversion of control to avoid the duplication
+- render function props
 - render props hook pattern
-- slots and slotProps
 - React slots patterns
+- custom slots and slotProps
 - context override
 
 
