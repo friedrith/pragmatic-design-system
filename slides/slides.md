@@ -1,6 +1,6 @@
 ---
 # You can also start simply with 'default'
-theme: seriph
+theme: default
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://cover.sli.dev
@@ -13,6 +13,7 @@ info: |
   Learn more at [Sli.dev](https://sli.dev)
 # apply unocss classes to the current slide
 class: text-center
+colorSchema: light
 # https://sli.dev/features/drawing
 drawings:
   persist: false
@@ -98,7 +99,6 @@ Mui or Shadcn/ui
 
 It will give a good starting point and a structure for your themes and some base components.
 
-
 ---
 
 ## Atomic Design
@@ -113,35 +113,21 @@ Cool in theory. In practice, adapt it to your needs.
 
 ---
 
-## React patterns
+## Pragmatic Atomic Design
+
+| Type | UI | Domain Specific | Logic | Variants |
+|----------|-----|-----------------|-------|---------------------------|
+| Atoms | ✓ | ✗ | ✗ | Infinite |
+| Molecules | ✓ | Often | ✗ | Infinite |
+| Organisms | ✗ | Always | ✓ | One main (customizable) |
+
+honorable mentions: templates, pages, providers.
+
+---
+
+## React Patterns
 
 Today we will focus on the React patterns to make your design system components reusable, flexible but not too much.
-
-- atoms: ui, no domain specific, no logic, allow infinite variants (UI)
-- molecules: ui, more complex, often domain specific, no logic, allow infinite variants
-- organisms: no ui, logic, one main variant, customizable (only )
-
-
-
-
-
-Adoption of the design system
-
-- atomic design
-
-- tokens / theme
-- components
-
-
-- a generic design system doesn't exist
-
-
-- generic components (atoms)
-- business specific components (molecules)
-- businss logic specific components (organisms)
-
-Change of paradigm between molecules and organisms. Molecules are generic without logic. Organisms have integrated logic that can be customized.
-
 
 - composition
   - inversion of control
@@ -152,38 +138,62 @@ Change of paradigm between molecules and organisms. Molecules are generic withou
 - custom slots and slotProps
 - context override
 
-
-
-
-Presentation slides for developers
-
-<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
-  Press Space for next page <carbon:arrow-right />
-</div>
-
-<div class="abs-br m-6 text-xl">
-  <button @click="$slidev.nav.openInEditor" title="Open in Editor" class="slidev-icon-btn">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" class="slidev-icon-btn">
-    <carbon:logo-github />
-  </a>
-</div>
-
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
----
-transition: fade-out
 ---
 
-# What is Slidev?
+## Trigger warning
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
+This presentation is a follow-up of a [previous presentation](https://github.com/friedrith/react-composition).
 
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
+Don't worry. I will reexplain most of the patterns that are useful for your design system.
+
+But I will skip the story telling.
+
+So I consider you are convinced enough that you shouldn't have this code in your design system components:
+
+```tsx
+if (isFeatureAEnabled()) {
+  doFeatureA();
+} else {
+  doFeatureB();
+}
+```
+
+---
+layout: cool-demo
+url: https://friedrith.github.io/react-composition/#/validity-indicator?demo=1
+---
+
+## Composition
+
+To avoid the code before, a good practice is inversion of control. You will let the parent of the component decide what to do.
+
+The most common is using composition.
+
+```tsx
+export function Input({ endDecorator }) {
+	return (
+		<div className="input-container">
+			<input className="input" />
+			{endDecorator}
+		</div>
+	);
+}
+
+export function Example() {
+	return (
+		<div className="example-container">
+			<Input endDecorator={<ClearButton />} />
+		</div>
+	);
+}
+```
+
+---
+
+
+
+
+
 - 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
 - 🤹 **Interactive** - embed Vue components to enhance your expressions
 - 🎥 **Recording** - built-in recording and camera view
