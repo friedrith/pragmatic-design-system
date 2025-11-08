@@ -6,10 +6,10 @@ import * as ReactSlots from "./02-react-slots";
 import * as RenderFunctionProp from "./03-render-function-prop";
 import * as RenderComponentProp from "./04-render-component-prop";
 import * as PropsGetter from "./05-props-getter";
-import * as CustomSlotsProps from "./06-custom-slots-props";
+import * as CustomSlots from "./06-custom-slots";
 import { getPageUrl } from "./utils/get-page-url";
-import { Layout } from "./utils/Layout";
-import { Page } from "./utils/Page";
+import { Layout } from "./utils/layout";
+import { Page } from "./utils/page";
 
 const routes = [
 	Composition,
@@ -17,7 +17,7 @@ const routes = [
 	RenderFunctionProp,
 	RenderComponentProp,
 	PropsGetter,
-	CustomSlotsProps,
+	CustomSlots,
 ];
 
 function App() {
