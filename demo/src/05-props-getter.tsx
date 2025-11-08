@@ -1,15 +1,17 @@
 import { useState } from "react";
+import { CheckIndicator } from "./utils/check-indicator";
 
-export const title = "Render Props Hook";
+export const title = "Props Getter";
 
 interface InputProps {
 	value: string;
 	onChange: (value: string) => void;
+	endDecorator?: React.ReactNode;
 }
 
 // Sometimes it is not about rendering something different, but about controlling the behavior of a component.
 
-export function Input({ value, onChange }: InputProps) {
+export function Input({ value, onChange, endDecorator }: InputProps) {
 	return (
 		<div className="input-container">
 			<input
@@ -17,6 +19,7 @@ export function Input({ value, onChange }: InputProps) {
 				value={value}
 				onChange={(e) => onChange(e.target.value)}
 			/>
+			{endDecorator}
 		</div>
 	);
 }
@@ -61,6 +64,7 @@ function useCreditCardProps() {
 		getCreditCardInputProps: () => ({
 			value,
 			onChange: onChangeCreditCardNumbers,
+			endDecorator: value.length === 19 ? <CheckIndicator /> : null,
 		}),
 	};
 }

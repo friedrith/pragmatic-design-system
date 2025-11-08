@@ -7,10 +7,8 @@ background: https://cover.sli.dev
 # some information about your slides (markdown enabled)
 title: Pragmatic Design System
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
+  How to organize your design system components without a strong design vision
+  Learn more at [Pragmatic Design System](https://github.com/friedrith/pragmatic-design-system)
 # apply unocss classes to the current slide
 class: text-center
 colorSchema: light
@@ -31,7 +29,56 @@ Thibault Friedrich
 
 ---
 
-## What is a design system?
+# Introducing myself: Thibault Friedrich
+
+- Frontend developer for 12+ years
+- Using _React_ for 8+ years and love it
+- Strong focus on Ux, Agile and Code craftsmanship
+  - how to create usable products
+  - how to keep flexibility
+  - how to write **Clean Code**
+- Implementing design systems for 4 years
+- Maintainer of [DesignSystemHub](https://design-system-hub.com) & [Features-cli](https://github.com/interaction-dynamics/features)
+
+<div class="abs-bl m-6 flex gap-2">
+  <!-- <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
+    <carbon:edit />
+  </button> -->
+  <a href="https://www.linkedin.com/in/thibault-friedrich/" target="_blank" alt="Linkedin"
+    class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-black">
+    <carbon-logo-linkedin />
+  </a>
+  <a href="https://github.com/friedrith" target="_blank" alt="GitHub"
+    class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-black">
+    <carbon-logo-github />
+  </a>
+  <a href="https://medium.com/@thibault-friedrich" target="_blank" alt="Medium"
+    class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-black">
+    <carbon-logo-medium />
+  </a>
+</div>
+
+---
+
+# Follow-up presentation
+
+This presentation is a follow-up of a [previous presentation](https://github.com/friedrith/react-composition).
+
+I will reexplain some patterns but I will skip a part of the story telling.
+
+So I consider you are convinced enough that you understand why it is important to not have this code in your design system components:
+
+```tsx
+if (isFeatureAEnabled()) {
+  doFeatureA();
+} else {
+  doFeatureB();
+}
+```
+
+---
+
+# What is a design system?
 
 - standards and guidelines
 - style guide
@@ -48,7 +95,7 @@ In small companies, you use an existing design system. But in larger organizatio
 
 ---
 
-## In the ideal world
+# In the ideal world
 
 You have a strong design system team that can create a strong design system.
 
@@ -64,44 +111,48 @@ But what happens if you don't have a strong design system team?
 
 ---
 
-## For example
+# For example
 
 Multiple variants of the same component.
 
 ---
 
 
-## In the real world
+# In the real world
 
-You have only few designers. They cannot support and maintain this design system. They only design mockups for the incoming features.
+You have only few designers in your company and only design mockups for the incoming features.
 
-So as developers, you have to build the design system yourself.
+As developers, you have to build the design system yourself.
 
-You will skip the standards and guidelines.
+1. skip the standards and guidelines.
+2. extract the style guide from features mockups.
+3. alone for the components strategy:
+    - Flexible for the future
+    - Enforce consistency
 
-You might extract the style guide from features mockups.
+**That's a pragmatic design system.**
 
-But you are alone on the components.
-
-You have to build the components without knowing what will be needed in the future.
-
-So you need to make them flexible. But in the same time you need to enforce some constraints to maintain some consistency.
-
--> That's a pragmatic design system.
-
-We will go through a list of baby steps to have a pragmatic design system.
+→ Baby steps
 
 ---
 
-## Reuse an existing base:
+# Step 1: Reuse an existing library
 
-Mui or Shadcn/ui
+<div align="center">
+<img src="/mui.png" alt="mui" style="height: 100px" />
+<br/>
+<img src="/shadcn.png" alt="mui" style="height: 100px" />
+
+</div>
+
 
 It will give a good starting point and a structure for your themes and some base components.
 
+If your company is larger, you can consider Ant Design or tailwind.
+
 ---
 
-## Atomic Design
+# Atomic Design
 
 - atoms
 - molecules
@@ -109,68 +160,57 @@ It will give a good starting point and a structure for your themes and some base
 - templates
 - pages
 
-Cool in theory. In practice, adapt it to your needs.
+Cool in theory.
+
+But a Design system is not a **one-size-fits-all** solution.
+
+It must be adapted to your needs and your domain.
 
 ---
 
-## Pragmatic Atomic Design
+# Step 2: Pragmatic Atomic Design
 
-| Type | UI | Domain Specific | Logic | Variants |
-|----------|-----|-----------------|-------|---------------------------|
-| Atoms | ✓ | ✗ | ✗ | Infinite |
-| Molecules | ✓ | Often | ✗ | Infinite |
-| Organisms | ✗ | Always | ✓ | One main (customizable) |
+For example:
 
-honorable mentions: templates, pages, providers.
+
+| Type | Domain Specific | Business Logic | Infinite Variants |
+|----------|------------------|-------|---------------------------|
+| Atoms | ✗ | ✗ | ✓ |
+| Molecules | ✓ | ✗ | ✓ |
+| Organisms | ✓ | ✓ | ✗ (but customizable) |
+
+
+__The important is to keep them separate.__
+
+<div class="absolute left-30px bottom-30px">
+    Honorable mentions: templates, pages, providers.
+</div>
+
 
 ---
 
-## React Patterns
+# Step 3: React Patterns
 
 Today we will focus on the React patterns to make your design system components reusable, flexible but not too much.
 
-- composition
-  - inversion of control
-  - but sometimes, we need to limit of the inversion of control to avoid the duplication
-- render function props
-- render props hook pattern
-- React slots patterns
-- custom slots and slotProps
-- context override
-
----
-
-## Trigger warning
-
-This presentation is a follow-up of a [previous presentation](https://github.com/friedrith/react-composition).
-
-Don't worry. I will reexplain most of the patterns that are useful for your design system.
-
-But I will skip the story telling.
-
-So I consider you are convinced enough that you shouldn't have this code in your design system components:
-
-```tsx
-if (isFeatureAEnabled()) {
-  doFeatureA();
-} else {
-  doFeatureB();
-}
-```
+- Composition → atoms
+- React slots pattern → atoms
+- Render prop → atoms
+- Prop getter → molecules
+- Custom slots and slotProps → organisms
+- Context override → organisms
 
 ---
 layout: cool-demo
 url: http://localhost:5173/#/composition?demo=1
 ---
 
-## Composition
+# Composition
 
-To avoid the code before, a good practice is inversion of control. You will let the parent of the component decide what to do.
-
-The most common is using composition.
+Like `children`, but works for any property:
 
 ```tsx
-export function Input({ endDecorator }) {
+function Input({ endDecorator }) {
 	return (
 		<div className="input-container">
 			<input className="input" />
@@ -179,19 +219,152 @@ export function Input({ endDecorator }) {
 	);
 }
 
-export function Example() {
+function Example() {
 	return (
-		<div className="example-container">
+		<>
 			<Input endDecorator={<ClearButton />} />
-		</div>
+			<Input endDecorator={<CheckIndicator />} />
+		</>
 	);
 }
 ```
 
 ---
+layout: cool-demo
+url: http://localhost:5173/#/react-slots?demo=1
+---
+
+# React Slots pattern
+
+Smart composition leveraging `children`.
+
+```tsx
+function Input({ children }: InputProps) {
+ 	const startDecorator = Children.toArray(children).find(
+		(child) => child.type === InputStartDecorator,
+	);
+	const endDecorator = Children.toArray(children).find(
+		(child) => child.type === InputEndDecorator,
+	);
+
+	return (
+		<div className="input-container">
+			{startDecorator}
+			<input className="input" />
+			{endDecorator}
+		</div>
+	);
+}
+
+function Example() {
+	return (
+		<Input>
+			<InputStartDecorator>
+				<EnvelopeIcon className="h-8 w-8" />
+			</InputStartDecorator>
+			<InputEndDecorator>
+				<button className="button" type="button">
+					<XCircleIcon className="h-8 w-8" />
+				</button>
+			</InputEndDecorator>
+		</Input>
+	);
+}
+```
+
+More useful for Modals, Card, etc.
+
+---
+layout: cool-demo
+url: http://localhost:5173/#/render-component-prop?demo=1
+---
+
+# Render Prop
+
+Sometimes composition is not enough:
+
+```tsx
+export function Input({ renderEndDecorator: RenderEndDecorator }) {
+	const [value, setValue] = useState("");
+
+	return (
+		<div className="input-container">
+			<input
+				className="input"
+				value={value}
+				onChange={(event) => setValue(event.target.value)}
+			/>
+			<RenderEndDecorator value={value} onChange={setValue} />
+		</div>
+	);
+}
+
+export function Example() {
+	return <Input renderEndDecorator={RenderEndDecorator}/>;
+}
+```
+
+It gives more interaction between the components
+
+---
+
+# Inversion of Control
+
+- Composition
+- React Slots
+- Render Props
+
+We removed the logic from the **atoms** to keep them generic using inversion of control (SOLID)
+
+Now the logic is controlled by the parent component.
+
+But sometimes we want to make this logic reusable too.
+
+---
+
+# Prop Getter
+
+```tsx
+function Example() {
+	const { getCreditCardInputProps } = useCreditCardProps();
+
+	return <Input {...getCreditCardInputProps()} />;
+}
+```
+
+<iframe style="width: 100%; height: 300px" src="http://localhost:5173/#/props-getter?demo=1">
+
+</iframe>
+
+
+<div class="absolute left-30px bottom-30px">
+    <a href="https://www.epicreact.dev/workshops/advanced-react-patterns/prop-getters">Advanced React Patterns by Kent C. Dodds</a>
+</div>
+
+---
+
+# Atoms & Molecules != Organisms
+
+With the 4 patterns, you cover all the needs for the atoms and molecules.
+
+Remain generic
+
+Give a lot of flexibility
+
+But by experience, you cannot keep the same logic for all your components.
+
+A lot of code duplication. Inconsistency.
+
+Organisms: change of paradigm. One variant but some endpoints may be customizable
+
+
+---
 
 
 
+
+
+---
 
 
 - 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion

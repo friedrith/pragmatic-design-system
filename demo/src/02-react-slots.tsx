@@ -1,7 +1,7 @@
 import { EnvelopeIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import { Children } from "react";
 
-export const title = "React Slots patterns";
+export const title = "React Slots";
 
 interface InputProps {
 	children: React.ReactNode;
@@ -14,11 +14,11 @@ const hasType = (child: React.ReactNode): child is React.ReactElement => {
 // Sometimes you want to provide multiple children to a component.
 
 export function Input({ children }: InputProps) {
-	const endDecorator = Children.toArray(children).find(
-		(child) => hasType(child) && child.type === EndDecorator,
-	);
 	const startDecorator = Children.toArray(children).find(
-		(child) => hasType(child) && child.type === StartDecorator,
+		(child) => hasType(child) && child.type === InputStartDecorator,
+	);
+	const endDecorator = Children.toArray(children).find(
+		(child) => hasType(child) && child.type === InputEndDecorator,
 	);
 
 	return (
@@ -33,24 +33,24 @@ export function Input({ children }: InputProps) {
 export function Example() {
 	return (
 		<Input>
-			<StartDecorator>
+			<InputStartDecorator>
 				<EnvelopeIcon className="h-8 w-8" />
-			</StartDecorator>
-			<EndDecorator>
+			</InputStartDecorator>
+			<InputEndDecorator>
 				<button className="button" type="button">
 					<XCircleIcon className="h-8 w-8" />
 				</button>
-			</EndDecorator>
+			</InputEndDecorator>
 		</Input>
 	);
 }
 
-function EndDecorator({ children }: { children: React.ReactNode }) {
-	return <div className="end-decorator">{children}</div>;
+function InputStartDecorator({ children }: { children: React.ReactNode }) {
+	return <div className="start-decorator">{children}</div>;
 }
 
-function StartDecorator({ children }: { children: React.ReactNode }) {
-	return <div className="start-decorator">{children}</div>;
+function InputEndDecorator({ children }: { children: React.ReactNode }) {
+	return <div className="end-decorator">{children}</div>;
 }
 
 // Give more flexibility to render multiple named children but sometimes complex to understand so should be limited to composition renderings. Sometimes it is better to use properties

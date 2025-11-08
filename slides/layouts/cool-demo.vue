@@ -6,8 +6,8 @@ const props = defineProps({
 
 <!-- default.vue -->
 <template>
-  <div class="grid grid-cols-2 w-full h-full">
-    <div class="slidev-layout">
+  <div class="grid grid-cols-3 w-full h-full">
+    <div class="slidev-layout col-span-2">
       <slot />
     </div>
     <div relative style="width: 100%; height: 100%">

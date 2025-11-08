@@ -1,21 +1,23 @@
 import "./App.css";
-import { HashRouter, Link, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import * as Composition from "./01-composition";
-import * as RenderFunctionProps from "./02-render-function-props";
-import * as RenderComponentProps from "./03-render-component-props";
-import * as RenderPropsHook from "./04-render-props-hook";
-import * as ReactSlotsPatterns from "./05-react-slots-patterns";
+import * as ReactSlots from "./02-react-slots";
+import * as RenderFunctionProp from "./03-render-function-prop";
+import * as RenderComponentProp from "./04-render-component-prop";
+import * as PropsGetter from "./05-props-getter";
+import * as CustomSlotsProps from "./06-custom-slots-props";
 import { getPageUrl } from "./utils/get-page-url";
 import { Layout } from "./utils/Layout";
 import { Page } from "./utils/Page";
 
 const routes = [
 	Composition,
-	RenderFunctionProps,
-	RenderComponentProps,
-	RenderPropsHook,
-	ReactSlotsPatterns,
+	ReactSlots,
+	RenderFunctionProp,
+	RenderComponentProp,
+	PropsGetter,
+	CustomSlotsProps,
 ];
 
 function App() {

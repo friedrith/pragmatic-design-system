@@ -1,3 +1,4 @@
+import { CheckIndicator } from "./utils/check-indicator";
 import { ClearButton } from "./utils/clear-button";
 
 export const title = "Composition";
@@ -17,9 +18,10 @@ export function Input({ endDecorator }: InputProps) {
 
 export function Example() {
 	return (
-		<div className="example-container">
+		<>
 			<Input endDecorator={<ClearButton />} />
-		</div>
+			<Input endDecorator={<CheckIndicator />} />
+		</>
 	);
 }
 

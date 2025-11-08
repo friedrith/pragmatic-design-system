@@ -5,6 +5,7 @@ body, html, #root, .app {
   padding: 0;
   margin: 0;
   --background: #e0e0e0;
+  text-align: center;
 
 }
 
@@ -66,12 +67,14 @@ body, html, #root, .app {
      box-shadow: inset 4px 4px 8px #bebebe,
                  inset -4px -4px 8px #ffffff;
 
-     @apply flex items-stretch w-80 relative px-6;
+     @apply flex items-stretch w-70 relative px-6;
    }
 
    .neumorphism .input {
      background: transparent;
      outline: none;
+     width: auto;
+     min-width: 0;
      @apply border-0 py-5 flex-1;
    }
 

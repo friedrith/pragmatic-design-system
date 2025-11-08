@@ -1,7 +1,8 @@
-export type SlotProps<T extends Record<string, React.FunctionComponent>> = {
-	[P in keyof T]?: Partial<React.ComponentProps<T[P]>>;
-};
+export type SlotProps<T extends Record<string, React.FunctionComponent<any>>> =
+	{
+		[P in keyof T]?: Partial<React.ComponentProps<T[P]>>;
+	};
 
-export type Slots<T extends Record<string, React.FunctionComponent>> = {
+export type Slots<T extends Record<string, React.FunctionComponent<any>>> = {
 	[P in keyof T]?: T[P];
 };

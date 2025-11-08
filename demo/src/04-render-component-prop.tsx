@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ClearButton } from "./utils/clear-button";
 
-export const title = "Render Component Props";
+export const title = "Render Component Prop";
 
 interface InputProps {
 	renderEndDecorator: ({

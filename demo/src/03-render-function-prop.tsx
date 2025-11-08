@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ClearButton } from "./utils/clear-button";
 
-export const title = "Render Function Props";
+export const title = "Render Function Prop";
 
 interface InputProps {
 	renderEndDecorator: (value: string) => React.ReactNode;
