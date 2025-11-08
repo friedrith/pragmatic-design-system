@@ -2,7 +2,7 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"build": "slidev build --base /__REPOSITORY_NAME__/slides --out ../dist/slides",
+		"build": "slidev build --base /pragmatic-design-system/slides --out ../dist/slides",
 		"dev": "slidev --open",
 		"export": "slidev export"
 	},
