@@ -3,15 +3,15 @@
 theme: default
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
+background: /background.png
 # some information about your slides (markdown enabled)
 title: Pragmatic Design System
 info: |
   How to organize your design system components without a strong design vision
   Learn more at [Pragmatic Design System](https://github.com/friedrith/pragmatic-design-system)
 # apply unocss classes to the current slide
-class: text-center
 colorSchema: light
+layout: cover
 # https://sli.dev/features/drawing
 drawings:
   persist: false
@@ -23,9 +23,13 @@ mdc: true
 
 # Pragmatic Design System
 
-## How to organize your design system components without a strong design vision
+## How to organize your design system components <br/> without a strong design vision
 
 Thibault Friedrich
+
+<style>
+
+</style>
 
 ---
 
@@ -272,7 +276,7 @@ function Example() {
 }
 ```
 
-More useful for Modals, Card, etc.
+More useful for Modals, Card, etc. Similar to Slots in Vue.js
 
 ---
 layout: cool-demo
@@ -406,6 +410,9 @@ Organisms: One variant but all the subcomponents are customizable
     - Render prop for molecules
     - Props getter in parallel of atoms and molecules
     - Custom slots and subcomponents for organisms
+
+
+Of course, implementing a good design system requires much more and some other topics like documentation, testing, accessibility.
 
 ---
 layout: two-cols

@@ -2,6 +2,15 @@
   background: #e0e0e0;
 }
 
+.slidev-layout.cover {
+    background-image: url('/background.png')!important;
+    color: black!important;
+}
+
+.slidev-layout.cover .my-auto {
+    padding-left: 5rem!important;
+}
+
 pre {
   --prism-foreground: #d4d4d4;
   --prism-background: #1e1e1e;
