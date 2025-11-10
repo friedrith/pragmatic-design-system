@@ -1,5 +1,5 @@
 .light .slidev-layout {
-  background: #e0e0e0;
+  background: white;
 }
 
 .slidev-layout.cover {
@@ -9,6 +9,22 @@
 
 .slidev-layout.cover .my-auto {
     padding-left: 5rem!important;
+}
+
+:root {
+    --common: #F7ECFC;
+    --uncommon: #3EC427;
+    --rare: #4FA1D9;
+    --legendary: #FCB100;
+    --epic: #AE4FCE;
+}
+
+.part {
+    background-color: var(--rare);
+    color: white;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    padding: 1rem;
 }
 
 pre {
@@ -30,11 +46,27 @@ pre {
   --prism-regex: #ad502b;
 }
 
+
 h1 {
   font-weight: 700;
   letter-spacing: -.025em;
   font-size: 1.875rem;
   line-height: 2.25rem;
+  color: var(--legendary);
+}
+
+h2 {
+    color: var(--rare);
+    font-weight: 500;
+}
+
+.slidev-layout h1 + p {
+    opacity: 1;
+}
+
+strong {
+ color: var(--epic);
+ /*color: oklch(0.42 0.18 264);*/
 }
 
 .slidev-page[layout="cool-demo"] .slidev-layout {
@@ -57,7 +89,6 @@ h1 {
 }
 
 .slidev-code {
-  max-height: 520px!important;
   overflow: auto;
-  max-height: 40vh!important;
+  max-height: 50vh!important;
 }

@@ -33,7 +33,7 @@ Thibault Friedrich
 
 ---
 
-# Introducing myself: Thibault Friedrich
+# About me: Thibault Friedrich
 
 - Frontend developer for 12+ years
 - Using _React_ for 8+ years and love it
@@ -43,6 +43,8 @@ Thibault Friedrich
   - how to write **Clean Code**
 - Implementing design systems for 4 years
 - Maintainer of [DesignSystemHub](https://design-system-hub.com) & [Features-cli](https://github.com/interaction-dynamics/features)
+
+<img src="/thibault-friedrich.png" class="absolute right-20 top-20 w-60">
 
 <div class="abs-bl m-6 flex gap-2">
   <!-- <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
@@ -63,14 +65,16 @@ Thibault Friedrich
 </div>
 
 ---
+layout: two-cols
+---
 
-# Follow-up presentation
+# React Patterns volume 2
 
 This presentation is a follow-up of a [previous presentation](https://github.com/friedrith/react-composition).
 
 I will reexplain some patterns but I will skip a part of the story telling.
 
-So I consider you are convinced enough that you understand why it is important to not have this code in your design system components:
+So I consider you are __convinced__ enough that the code below is generally not a good idea for design system components:
 
 ```tsx
 if (isFeatureAEnabled()) {
@@ -80,6 +84,15 @@ if (isFeatureAEnabled()) {
 }
 ```
 
+::right::
+
+<a href="https://github.com/friedrith/react-composition" target="_blank">
+    <img src="/screenshot.png" class="w-full m-10" />
+</a>
+
+
+---
+layout: two-cols
 ---
 
 # What is a design system?
@@ -88,55 +101,78 @@ if (isFeatureAEnabled()) {
 - style guide
 - **reusable components**
 
-This design system has 2 parts:
+2 key parts:
 
-- **Design**
-- **Development**
+<div class="flex items-center space-x-2 w-full text-center mb-10">
+    <div class="flex-1 part">
+        Design
+    </div>
+    <div class="flex-1 part">
+        Development
+    </div>
+</div>
 
-It is very helpful when you want to have a consistent user experience. It also helps developers to build features faster.
+Benefits:
 
-In small companies, you use an existing design system. But in larger organizations you build your own design system because you have specific needs (on the top of an existing one).
+- provide consistent user experience
+- accelerate development
+
+::right::
+
+<img src="/design-system.jpg" alt="Design System Image" class="ml-8">
 
 ---
 
 # In the ideal world
 
-You have a strong design system team that can create a strong design system.
-
-They have a vision so when you build the components, you know what they should include.
-
-A design system team includes:
+You have a strong design system team:
 
 - designers
 - frontend developers
 - accessibility experts
 
-But what happens if you don't have a strong design system team?
+They have a vision so when you can build the components with clear variants:
+
+<div class="flex items-center space-x-2 w-full text-center mb-10">
+    <div class="flex-1 part">
+        Variant 1
+    </div>
+    <div class="flex-1 part">
+        Variant 2
+    </div>
+    <div class="flex-1 part">
+        Variant 3
+    </div>
+    <div class="flex-1 part">
+        Variant 4
+    </div>
+</div>
+
+
+__But what happens if you don't have a strong design system team?__
+
+<div class="absolute left-30px bottom-30px">
+    <a>https://www.nngroup.com/articles/design-systems-101/</a>
+</div>
+
+
+
 
 ---
-
-# For example
-
-Multiple variants of the same component.
-
----
-
 
 # In the real world
 
-You have only few designers in your company and only design mockups for the incoming features.
+Designers don't have time.
 
-As developers, you have to build the design system yourself.
+As developers, you are __alone__ to build and maintain the design system.
+
+You must be pragmatic:
 
 1. skip the standards and guidelines.
 2. extract the style guide from features mockups.
-3. alone for the components strategy:
+3. alone to build the component library:
     - Flexible for the future
     - Enforce consistency
-
-**That's a pragmatic design system.**
-
-→ Baby steps
 
 ---
 
@@ -150,10 +186,12 @@ As developers, you have to build the design system yourself.
 </div>
 
 
-It will give a good starting point and a structure for your themes and some base components.
+__Good starting point__ and a structure for your themes and base components.
 
-If your company is larger, you can consider Ant Design or tailwind.
+> If your company is larger, you may consider __Ant Design__ or __Tailwind__.
 
+---
+layout: two-cols
 ---
 
 # Atomic Design
@@ -169,6 +207,11 @@ Cool in theory.
 But a Design system is not a **one-size-fits-all** solution.
 
 It must be adapted to your needs and your domain.
+
+::right::
+
+<img src="/atomic-design.png" alt="Atomic Design" class="w-[90%] mx-10" />
+
 
 ---
 
@@ -195,7 +238,7 @@ __The important is to keep them separate.__
 
 # Step 3: React Patterns
 
-Today we will focus on the React patterns to make your design system components reusable, flexible but not too much.
+Find a good balance of flexible and consistency:
 
 - Composition → atoms
 - React slots pattern → atoms
@@ -206,7 +249,7 @@ Today we will focus on the React patterns to make your design system components 
 
 ---
 layout: cool-demo
-url: http://localhost:5173/#/composition?demo=1
+url: https://friedrith.github.io/pragmatic-design-system/#/composition?demo=1
 ---
 
 # Composition
@@ -235,7 +278,7 @@ function Example() {
 
 ---
 layout: cool-demo
-url: http://localhost:5173/#/react-slots?demo=1
+url: https://friedrith.github.io/pragmatic-design-system/#/react-slots?demo=1
 ---
 
 # React Slots pattern
@@ -280,7 +323,7 @@ More useful for Modals, Card, etc. Similar to Slots in Vue.js
 
 ---
 layout: cool-demo
-url: http://localhost:5173/#/render-component-prop?demo=1
+url: https://friedrith.github.io/pragmatic-design-system/#/render-component-prop?demo=1
 ---
 
 # Render Prop
@@ -336,7 +379,7 @@ function Example() {
 }
 ```
 
-<iframe style="width: 100%; height: 300px" src="http://localhost:5173/#/props-getter?demo=1">
+<iframe style="width: 100%; height: 300px" src="https://friedrith.github.io/pragmatic-design-system/#/props-getter?demo=1">
 
 </iframe>
 
@@ -403,7 +446,7 @@ Organisms: One variant but all the subcomponents are customizable
 
 **Maintaining a design system is hard without designers. Require good architectural choices.**
 
-1. Library
+1. Mui or Shadcn/ui
 2. Atomic Design with some Domain Driven sections.
 3. React patterns:
     - Composition & React slots for atoms
