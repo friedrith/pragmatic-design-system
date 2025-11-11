@@ -96,6 +96,25 @@ body, html, #root, .app {
      @apply rounded-full;
    }
 
+   .calendar {
+       zoom: 0.8;
+       border-radius: 20px;
+       background: var(--background);
+       border: none;
+       box-shadow: inset 4px 4px 8px #bebebe,
+                   inset -4px -4px 8px #ffffff;
+
+    @apply p-5 rounded-xl;
+   }
+
+   .rdp-selected .rdp-day_button {
+       background: linear-gradient(145deg, #ffffff, #e6e6e6);
+       box-shadow: inset 4px 4px 8px #bebebe,
+                   inset -4px -4px 8px #ffffff;
+
+      border: none!important;
+   }
+
    .neumorphism .keybinding {
      display: inline-flex;
 

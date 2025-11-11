@@ -378,50 +378,87 @@ function useCreditCardProps() {
 </div>
 
 ---
+layout: cool-demo
+url: http://localhost:5173/#/organism?demo=1
+---
 
-# 2 Paradigms
+# Organism Paradigm
 
-Atoms & Molecules: <strong class="legendary"> genericity </strong>
+Atoms & Molecules: __genericity__
 
-But by experience, you cannot keep the same logic for all your components.
+But you cannot keep the same logic for all your components.
 
 A lot of code duplication. Hard to maintain the consistency.
 
 Organisms: One default variant but with <strong class="legendary">customizable</strong> endpoints.
 
-__→ New patterns to allow this customization__
+```tsx
+<Calendar
+	date={selected}
+	onDateChange={setSelected}
+/>
+```
 
+---
+layout: cool-demo
+url: http://localhost:5173/#/custom-slots?demo=1
 ---
 
 # Custom Slots
 
-```tsx
-<DatePicker
-  defaultDate={new Date()}
-  onChange={onChangeDate}
-  slotProps={{
-    actionBar: { // <-- actionBar is a subcomponent of DatePicker and we override the default props
-      actions: ['clear'],
-    },
-  }}
+```tsx{|4-8}
+<Calendar
+	date={selected}
+	onDateChange={setSelected}
+	slotProps={{
+		actionBar: { // <-- customizable endpoint
+		  actions: ["today", "clear"] } // <-- overridden properties
+	  }
+	}
 />
 ```
+
+<div className="absolute right-5 top-27 z-50 w-[280px] text-center">
+    <div class="h-10" v-mark="{ at: 1, color: 'orange', type: 'circle' }">
+    </div>
+</div>
 
 Inspired from [Mui X](https://mui.com/x/react-date-pickers/custom-components/).
 
 
-You can override some behaviours or properties.
+You can override subcomponents properties.
 
+---
+layout: cool-demo
+url: http://localhost:5173/#/custom-subcomponents?demo=1
 ---
 
 # Custom Subcomponents
 
 ```tsx
-<DatePicker
-  slots={{
-    actionBar: CustomActionBar,
-  }}
-/>
+function Example() {
+	const [selected, setSelected] = useState<Date>();
+	return (
+		<Calendar
+			date={selected}
+			onDateChange={setSelected}
+			slots={{ actionBar: CustomActionBar }} // <-- we override
+		/>
+	);
+}
+
+function CustomActionBar() {
+	return (
+		<div className="flex items-center gap-3 justify-between">
+			{actions.map((action) => (
+				<button key={action} onClick={() => onAction(action)}>
+					{action === "clear" ? "X" : action}
+				</button>
+			))}
+		</div>
+	);
+}
+
 ```
 
 You can override whole components.
@@ -434,7 +471,7 @@ Sometime props drilling is a pain.
 
 ```tsx
 <SlotsOverrideProvider slots={{actionBar: CustomActionBar}}>
-  <Feature />
+  <Page />
 </SlotsOverrideProvider>
 ```
 
