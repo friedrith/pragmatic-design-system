@@ -8,7 +8,7 @@
     <!--<a href="https://thibault-friedrich.medium.com/keep-your-react-components-maintainable-with-solid-react-composition-codecraftsmanship-4-2969834e9ffa">Article</a>-->
   </p>
 
-  <img src=".assets/screenshot.svg" alt="Screenshot" height="300" />
+  <img src=".assets/screenshot.png" alt="Screenshot" height="300" />
 </div>
 
 ## Getting started
