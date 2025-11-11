@@ -22,9 +22,13 @@
 .part {
     background-color: var(--rare);
     color: white;
-    font-weight: 500;
+    font-weight: 700;
     border-radius: 0.5rem;
     padding: 1rem;
+}
+
+.legendary {
+    color: var(--legendary);
 }
 
 pre {
@@ -90,5 +94,5 @@ strong {
 
 .slidev-code {
   overflow: auto;
-  max-height: 50vh!important;
+  max-height: 35vh!important;
 }

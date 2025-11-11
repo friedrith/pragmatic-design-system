@@ -23,9 +23,9 @@ mdc: true
 
 # Pragmatic Design System
 
-## How to organize your design system components <br/> without a strong design vision
+## Structuring your Design System without Designers
 
-Thibault Friedrich
+<strong style="color: black">Thibault Friedrich</strong>
 
 <style>
 
@@ -35,8 +35,8 @@ Thibault Friedrich
 
 # About me: Thibault Friedrich
 
-- Frontend developer for 12+ years
-- Using _React_ for 8+ years and love it
+- Frontend developer for __12+ years__
+- Using __React__ for 8+ years and love it
 - Strong focus on Ux, Agile and Code craftsmanship
   - how to create usable products
   - how to keep flexibility
@@ -65,8 +65,6 @@ Thibault Friedrich
 </div>
 
 ---
-layout: two-cols
----
 
 # React Patterns volume 2
 
@@ -74,22 +72,11 @@ This presentation is a follow-up of a [previous presentation](https://github.com
 
 I will reexplain some patterns but I will skip a part of the story telling.
 
-So I consider you are __convinced__ enough that the code below is generally not a good idea for design system components:
-
-```tsx
-if (isFeatureAEnabled()) {
-  doFeatureA();
-} else {
-  doFeatureB();
-}
-```
-
-::right::
-
+<div align="center">
 <a href="https://github.com/friedrith/react-composition" target="_blank">
-    <img src="/screenshot.png" class="w-full m-10" />
+    <img src="/screenshot.png" class="w-[80%] m-10" />
 </a>
-
+</div>
 
 ---
 layout: two-cols
@@ -101,7 +88,16 @@ layout: two-cols
 - style guide
 - **reusable components**
 
-2 key parts:
+Benefits:
+
+- provide consistent user experience
+- accelerate development
+
+<div v-click class="pt-8">
+
+<strong align="center" style="font-size: 2rem;" class="legendary block pb-2">
+    2 Parts
+</strong>
 
 <div class="flex items-center space-x-2 w-full text-center mb-10">
     <div class="flex-1 part">
@@ -112,10 +108,7 @@ layout: two-cols
     </div>
 </div>
 
-Benefits:
-
-- provide consistent user experience
-- accelerate development
+</div>
 
 ::right::
 
@@ -133,46 +126,25 @@ You have a strong design system team:
 
 They have a vision so when you can build the components with clear variants:
 
-<div class="flex items-center space-x-2 w-full text-center mb-10">
-    <div class="flex-1 part">
-        Variant 1
-    </div>
-    <div class="flex-1 part">
-        Variant 2
-    </div>
-    <div class="flex-1 part">
-        Variant 3
-    </div>
-    <div class="flex-1 part">
-        Variant 4
-    </div>
+<div className="flex justify-center">
+<img src="/components.png" alt="4 variants of a components" style="max-height: 250px;">
 </div>
-
-
-__But what happens if you don't have a strong design system team?__
-
-<div class="absolute left-30px bottom-30px">
-    <a>https://www.nngroup.com/articles/design-systems-101/</a>
-</div>
-
-
-
 
 ---
 
 # In the real world
 
-Designers don't have time.
+Sometimes, you don't have designers.
 
 As developers, you are __alone__ to build and maintain the design system.
 
-You must be pragmatic:
+You must be __pragmatic__:
 
-1. skip the standards and guidelines.
+1. skip the guidelines.
 2. extract the style guide from features mockups.
 3. alone to build the component library:
-    - Flexible for the future
-    - Enforce consistency
+    - __Flexible__ for unknown variants
+    - Enforce __consistency__
 
 ---
 
@@ -186,7 +158,7 @@ You must be pragmatic:
 </div>
 
 
-__Good starting point__ and a structure for your themes and base components.
+__Good starting point__: a structure for your themes and base components.
 
 > If your company is larger, you may consider __Ant Design__ or __Tailwind__.
 
@@ -224,7 +196,7 @@ For example:
 |----------|------------------|-------|---------------------------|
 | Atoms | ✗ | ✗ | ✓ |
 | Molecules | ✓ | ✗ | ✓ |
-| Organisms | ✓ | ✓ | ✗ (but customizable) |
+| Organisms | ✓ | ✓ | ✓ (but with a default variant) |
 
 
 __The important is to keep them separate.__
@@ -238,18 +210,21 @@ __The important is to keep them separate.__
 
 # Step 3: React Patterns
 
-Find a good balance of flexible and consistency:
+Find a good balance between flexibility and consistency:
 
-- Composition → atoms
-- React slots pattern → atoms
-- Render prop → atoms
-- Prop getter → molecules
-- Custom slots and slotProps → organisms
-- Context override → organisms
+- __atoms__
+  - Composition
+  - React slots pattern
+  - Render prop
+- __molecules__
+  - Prop getter
+- __organisms__
+  - Custom slots and slotProps
+  - Context override
 
 ---
 layout: cool-demo
-url: https://friedrith.github.io/pragmatic-design-system/#/composition?demo=1
+url: http://localhost:5173/#/composition?demo=1
 ---
 
 # Composition
@@ -276,9 +251,11 @@ function Example() {
 }
 ```
 
+So underestimated.
+
 ---
 layout: cool-demo
-url: https://friedrith.github.io/pragmatic-design-system/#/react-slots?demo=1
+url:  http://localhost:5173/#/react-slots?demo=1
 ---
 
 # React Slots pattern
@@ -319,11 +296,11 @@ function Example() {
 }
 ```
 
-More useful for Modals, Card, etc. Similar to Slots in Vue.js
+Very adapted for Modals, Card, etc. Similar to Slots in Vue.js
 
 ---
 layout: cool-demo
-url: https://friedrith.github.io/pragmatic-design-system/#/render-component-prop?demo=1
+url:  http://localhost:5173/#/render-component-prop?demo=1
 ---
 
 # Render Prop
@@ -351,7 +328,7 @@ export function Example() {
 }
 ```
 
-It gives more interaction between the components
+It gives more interaction between the components. It can be a function or a component.
 
 ---
 
@@ -359,14 +336,17 @@ It gives more interaction between the components
 
 - Composition
 - React Slots
-- Render Props
+- Render Prop
 
-We removed the logic from the **atoms** to keep them generic using inversion of control (SOLID)
+We removed the logic from the **atoms** and **molecules** to keep the components generic using inversion of control (SOLID).
 
 Now the logic is controlled by the parent component.
 
 But sometimes we want to make this logic reusable too.
 
+---
+layout: cool-demo
+url: http://localhost:5173/#/props-getter?demo=1
 ---
 
 # Prop Getter
@@ -377,12 +357,21 @@ function Example() {
 
 	return <Input {...getCreditCardInputProps()} />;
 }
+
+function useCreditCardProps() {
+	const [value, setValue] = useState("");
+	const onChangeCreditCardNumbers = //...
+
+	return {
+		getCreditCardInputProps: () => ({
+			value,
+			onChange: onChangeCreditCardNumbers,
+			endDecorator: value.length === 19 ? <CheckIndicator /> : null,
+		}),
+	};
+}
+
 ```
-
-<iframe style="width: 100%; height: 300px" src="https://friedrith.github.io/pragmatic-design-system/#/props-getter?demo=1">
-
-</iframe>
-
 
 <div class="absolute left-30px bottom-30px">
     <a href="https://www.epicreact.dev/workshops/advanced-react-patterns/prop-getters">Advanced React Patterns by Kent C. Dodds</a>
@@ -390,41 +379,38 @@ function Example() {
 
 ---
 
-# Atoms & Molecules != Organisms
+# 2 Paradigms
 
-With the 4 patterns, you cover all the needs for the atoms and molecules.
-
-Remain generic
-
-Give a lot of flexibility
+Atoms & Molecules: <strong class="legendary"> genericity </strong>
 
 But by experience, you cannot keep the same logic for all your components.
 
-A lot of code duplication. Inconsistency.
+A lot of code duplication. Hard to maintain the consistency.
 
+Organisms: One default variant but with <strong class="legendary">customizable</strong> endpoints.
+
+__→ New patterns to allow this customization__
 
 ---
 
 # Custom Slots
 
-Inspired from [Mui X](https://mui.com/x/react-date-pickers/custom-components/).
-
-Organisms: One variant but all the subcomponents are customizable
-
 ```tsx
 <DatePicker
+  defaultDate={new Date()}
+  onChange={onChangeDate}
   slotProps={{
-    // The actions will be the same between desktop and mobile
-    actionBar: {
+    actionBar: { // <-- actionBar is a subcomponent of DatePicker and we override the default props
       actions: ['clear'],
     },
   }}
 />
-
-
-
 ```
 
+Inspired from [Mui X](https://mui.com/x/react-date-pickers/custom-components/).
+
+
+You can override some behaviours or properties.
 
 ---
 
@@ -436,9 +422,25 @@ Organisms: One variant but all the subcomponents are customizable
     actionBar: CustomActionBar,
   }}
 />
-
-
 ```
+
+You can override whole components.
+
+---
+
+# Subcomponents Context Override
+
+Sometime props drilling is a pain.
+
+```tsx
+<SlotsOverrideProvider slots={{actionBar: CustomActionBar}}>
+  <Feature />
+</SlotsOverrideProvider>
+```
+
+You can override deep components.
+
+Very useful to apply specific behaviour or UI to a whole sub product (admin panel, specific client).
 
 ---
 
@@ -452,7 +454,7 @@ Organisms: One variant but all the subcomponents are customizable
     - Composition & React slots for atoms
     - Render prop for molecules
     - Props getter in parallel of atoms and molecules
-    - Custom slots and subcomponents for organisms
+    - Custom slots, subcomponents and context override for organisms
 
 
 Of course, implementing a good design system requires much more and some other topics like documentation, testing, accessibility.
