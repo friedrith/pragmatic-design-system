@@ -44,7 +44,7 @@ mdc: true
 - Implementing design systems for 4 years
 - Maintainer of [DesignSystemHub](https://design-system-hub.com) & [Features-cli](https://github.com/interaction-dynamics/features)
 
-<img src="/thibault-friedrich.png" class="absolute right-20 top-20 w-60">
+<img src="/thibault-friedrich.png" class="absolute right-20 top-20 w-60 rounded-md">
 
 <div class="abs-bl m-6 flex gap-2">
   <!-- <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
