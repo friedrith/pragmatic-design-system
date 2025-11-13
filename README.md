@@ -24,7 +24,7 @@ pnpm demo
 
 Several versions of this project are available:
 
-- [Version 1](url of the talk)
+- [First version](https://github.com/friedrith/pragmatic-design-system/tree/2025-react-montreal-meetup) presented at the React Montreal Meetup in 2025.
 
 ## License
 
