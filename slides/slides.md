@@ -65,20 +65,6 @@ mdc: true
 </div>
 
 ---
-
-# React Patterns volume 2
-
-This presentation is a follow-up of a [previous presentation](https://github.com/friedrith/react-composition).
-
-I will reexplain some patterns but I will skip a part of the story telling.
-
-<div align="center">
-<a href="https://github.com/friedrith/react-composition" target="_blank">
-    <img src="/screenshot.png" class="w-[80%] m-10" />
-</a>
-</div>
-
----
 layout: two-cols
 ---
 
@@ -124,7 +110,7 @@ You have a strong design system team:
 - frontend developers
 - accessibility experts
 
-They have a vision so when you can build the components with clear variants:
+They have a vision so the components may be defined with clear variants: `default`, `admin`, `disabled`
 
 <div className="flex justify-center">
 <img src="/components.png" alt="4 variants of a components" style="max-height: 250px;">
@@ -140,11 +126,11 @@ As developers, you are __alone__ to build and maintain the design system.
 
 You must be __pragmatic__:
 
-1. skip the guidelines.
-2. extract the style guide from features mockups.
-3. alone to build the component library:
-    - __Flexible__ for unknown variants
-    - Enforce __consistency__
+<ul>
+    <li><span v-mark.strike-through="{color: '#AE4FCE'}">standards and guidelines</span><strong v-click="1"> → Skip</strong></li>
+    <li><span v-mark.strike-through="{color: '#AE4FCE'}">style guide</span><strong v-click="2"> → Extract the style from the features mockups</strong></li>
+    <li>reusable components<strong v-click="3"> → Use patterns to enforce flexibility but consistency</strong></li>
+</ul>
 
 ---
 
@@ -199,8 +185,6 @@ For example:
 | Organisms | ✓ | ✓ | ✓ (but with a default variant) |
 
 
-__The important is to keep them separate.__
-
 <div class="absolute left-30px bottom-30px">
     Honorable mentions: templates, pages, providers.
 </div>
@@ -251,7 +235,9 @@ function Example() {
 }
 ```
 
-So underestimated.
+
+<strong style="display: block" v-click>Pros: easy to use, high level of flexibility.</strong>
+<strong style="display: block" v-click>Cons: no easy interaction between parent and child</strong>
 
 ---
 layout: cool-demo
@@ -328,7 +314,8 @@ export function Example() {
 }
 ```
 
-It gives more interaction between the components. It can be a function or a component.
+<strong style="display:block" v-click>Pros: function or component, interaction, flexibility</strong>
+<strong style="display:block" v-click>Cons: works for JSX, not for behaviours</strong>
 
 ---
 
@@ -373,7 +360,10 @@ function useCreditCardProps() {
 
 ```
 
-<div class="absolute left-30px bottom-30px">
+<strong style="display:block" v-click>Pros: flexibility</strong>
+<strong style="display:block" v-click>Cons: maintainability, inconsistency when used too much</strong>
+
+<div class="absolute right-30px bottom-10px z-50">
     <a href="https://www.epicreact.dev/workshops/advanced-react-patterns/prop-getters">Advanced React Patterns by Kent C. Dodds</a>
 </div>
 
@@ -384,9 +374,9 @@ url: http://localhost:5173/#/organism?demo=1
 
 # Organism Paradigm
 
-Atoms & Molecules: __genericity__
+Atoms & Molecules: __genericity__ using composition
 
-But you cannot keep the same logic for all your components.
+But you cannot keep the same paradigm for all your components.
 
 A lot of code duplication. Hard to maintain the consistency.
 
@@ -426,7 +416,8 @@ url: http://localhost:5173/#/custom-slots?demo=1
 Inspired from [Mui X](https://mui.com/x/react-date-pickers/custom-components/).
 
 
-You can override subcomponents properties.
+<strong style="display:block" v-click>Pros: targeted customization, overrides default variant</strong>
+<strong style="display:block" v-click>Cons: heavy if too many customizations, very hard to override deep children</strong>
 
 ---
 layout: cool-demo
