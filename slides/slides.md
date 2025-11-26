@@ -175,6 +175,12 @@ It must be adapted to your needs and your domain.
 
 # Step 2: Pragmatic Atomic Design
 
+- May be domain specific (payment summary for example)
+- May include logic (error management for example)
+- Need to support your request of balance flexibility/consistency
+
+<div v-click>
+
 For example:
 
 
@@ -189,22 +195,34 @@ For example:
     Honorable mentions: templates, pages, providers.
 </div>
 
+</div>
 
 ---
 
 # Step 3: React Patterns
 
-Find a good balance between flexibility and consistency:
+Find the React Patterns to support a good balance between flexibility and consistency:
 
-- __atoms__
+
+- __atoms__: UI & primitive components, very flexible
   - Composition
   - React slots pattern
   - Render prop
-- __molecules__
+  
+<div v-click>  
+  
+- __molecules__: UI domain specific components but without business logic
   - Prop getter
-- __organisms__
+  
+</div>
+
+<div v-click>
+
+- __organisms__: components with consistent business logic
   - Custom slots and slotProps
   - Context override
+
+</div>
 
 ---
 layout: cool-demo
@@ -216,21 +234,21 @@ url: http://localhost:5173/#/composition?demo=1
 Like `children`, but works for any property:
 
 ```tsx
-function Input({ endDecorator }) {
-	return (
-		<div className="input-container">
-			<input className="input" />
-			{endDecorator}
-		</div>
-	);
-}
-
 function Example() {
 	return (
 		<>
 			<Input endDecorator={<ClearButton />} />
 			<Input endDecorator={<CheckIndicator />} />
 		</>
+	);
+}
+
+function Input({ endDecorator }) {
+	return (
+		<div className="input-container">
+			<input className="input" />
+			{endDecorator}
+		</div>
 	);
 }
 ```
@@ -249,6 +267,21 @@ url:  http://localhost:5173/#/react-slots?demo=1
 Smart composition leveraging `children`.
 
 ```tsx
+function Example() {
+	return (
+		<Input>
+			<InputStartDecorator>
+				<EnvelopeIcon className="h-8 w-8" />
+			</InputStartDecorator>
+			<InputEndDecorator>
+				<button className="button" type="button">
+					<XCircleIcon className="h-8 w-8" />
+				</button>
+			</InputEndDecorator>
+		</Input>
+	);
+}
+
 function Input({ children }: InputProps) {
  	const startDecorator = Children.toArray(children).find(
 		(child) => child.type === InputStartDecorator,
@@ -265,21 +298,6 @@ function Input({ children }: InputProps) {
 		</div>
 	);
 }
-
-function Example() {
-	return (
-		<Input>
-			<InputStartDecorator>
-				<EnvelopeIcon className="h-8 w-8" />
-			</InputStartDecorator>
-			<InputEndDecorator>
-				<button className="button" type="button">
-					<XCircleIcon className="h-8 w-8" />
-				</button>
-			</InputEndDecorator>
-		</Input>
-	);
-}
 ```
 
 Very adapted for Modals, Card, etc. Similar to Slots in Vue.js
@@ -294,6 +312,10 @@ url:  http://localhost:5173/#/render-component-prop?demo=1
 Sometimes composition is not enough:
 
 ```tsx
+export function Example() {
+	return <Input renderEndDecorator={RenderEndDecorator}/>;
+}
+
 export function Input({ renderEndDecorator: RenderEndDecorator }) {
 	const [value, setValue] = useState("");
 
@@ -307,10 +329,6 @@ export function Input({ renderEndDecorator: RenderEndDecorator }) {
 			<RenderEndDecorator value={value} onChange={setValue} />
 		</div>
 	);
-}
-
-export function Example() {
-	return <Input renderEndDecorator={RenderEndDecorator}/>;
 }
 ```
 
@@ -466,9 +484,11 @@ Sometime props drilling is a pain.
 </SlotsOverrideProvider>
 ```
 
-You can override deep components.
-
 Very useful to apply specific behaviour or UI to a whole sub product (admin panel, specific client).
+
+<strong style="display:block" v-click>Pros: You can override deep component</strong>
+<strong style="display:block" v-click>Cons: Cannot target a specific component, ex 2 actionBar</strong>
+
 
 ---
 
