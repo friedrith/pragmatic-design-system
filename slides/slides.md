@@ -491,8 +491,8 @@ Sometime props drilling is a pain.
 
 Very useful to apply specific behaviour or UI to a whole sub product (admin panel, specific client).
 
-<strong style="display:block" v-click>Pros: You can override deep component</strong>
-<strong style="display:block" v-click>Cons: Cannot target a specific component, ex 2 actionBar</strong>
+<strong style="display:block" v-click>Pros: You can override deep components</strong>
+<strong style="display:block" v-click>Cons: Cannot target a specific component, example: 2 actionBars</strong>
 
 
 ---
