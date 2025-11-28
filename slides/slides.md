@@ -120,9 +120,7 @@ They have a vision so the components may be defined with clear variants: `defaul
 
 # In the real world
 
-Sometimes, you don't have designers.
-
-As developers, you are __alone__ to build and maintain the design system.
+Sometimes, you don't have designers to maintain the design system. As developers, you are __alone__.
 
 You must be __pragmatic__:
 
@@ -301,6 +299,13 @@ function Input({ children }: InputProps) {
 ```
 
 Very adapted for Modals, Card, etc. Similar to Slots in Vue.js
+
+<style>
+.slidev-code {
+  overflow: auto;
+  max-height: 25vh!important;
+}
+</style>
 
 ---
 layout: cool-demo
