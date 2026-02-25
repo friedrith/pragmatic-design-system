@@ -38,7 +38,7 @@ mdc: true
 - Currently Staff Software Developer at __Plusgrade__
 - Frontend developer for __12+ years__
 - Using __React__ for 8+ years and love it
-- Strong focus on Ux, Agile and Code craftsmanship
+- Strong focus on UX, Agile and Code craftsmanship
   - how to create usable products
   - how to write **Clean Code**
 - Implementing design systems for 5+ years
@@ -113,14 +113,14 @@ You have a strong design system team:
 They have a vision so the components may be defined with clear variants: `default`, `admin`, `disabled`
 
 <div className="flex justify-center">
-<img src="/components.png" alt="4 variants of a components" style="max-height: 250px;">
+<img src="/components.png" alt="4 variants of a component" style="max-height: 250px;">
 </div>
 
 ---
 
 # In the real world
 
-Sometimes, you don't have designers to maintain the design system. As developers, you are __alone__.
+More often than not, you don't have dedicated designers to maintain the design system. As developers, you are __alone__.
 
 You must be __pragmatic__:
 
@@ -137,14 +137,14 @@ You must be __pragmatic__:
 <div align="center">
 <img src="/mui.png" alt="mui" style="height: 100px" />
 <br/>
-<img src="/shadcn.png" alt="mui" style="height: 100px" />
+<img src="/shadcn.png" alt="shadcn" style="height: 100px" />
 
 </div>
 
 
 __Good starting point__: a structure for your themes and base components.
 
-> If your company is larger, you may consider __Ant Design__ or __Tailwind__.
+> If your company is larger, you may consider __Ant Design__ or __headless components__ & __Tailwind__.
 
 ---
 
@@ -185,7 +185,7 @@ It must be adapted to your needs and your domain.
 
 - May be domain specific (payment summary for example)
 - May include logic (error management for example)
-- Need to support your request of balance flexibility/consistency
+- Need to support the right balance between flexibility and consistency
 
 <div v-click>
 
@@ -304,7 +304,7 @@ export function Input({ renderEndDecorator: RenderEndDecorator }) {
 - Composition
 - Render Prop
 
-We removed the logic from the **atoms** and **molecules** to keep the components generic using inversion of control (SOLID).
+We removed the logic from the **atoms** and **molecules** to keep the components generic using inversion of control.
 
 Now the logic is controlled by the parent component.
 
@@ -437,7 +437,7 @@ You can override whole components.
 
 # Subcomponents Context Override
 
-Sometime props drilling is a pain.
+Sometimes props drilling is a pain.
 
 ```tsx
 <SlotsOverrideProvider slots={{actionBar: CustomActionBar}}>
@@ -455,14 +455,13 @@ Very useful to apply specific behaviour or UI to a whole sub product (admin pane
 
 # Conclusion
 
-**Maintaining a design system is hard without designers. Require good architectural choices.**
+**Maintaining a design system is hard without designers. It requires good architectural choices.**
 
 1. Mui or Shadcn/ui
 2. Atomic Design with some Domain Driven sections.
 3. React patterns:
-    - Composition & React slots for atoms
-    - Render prop for molecules
-    - Props getter in parallel of atoms and molecules
+    - Composition & Render prop for atoms
+    - Props getter for molecules
     - Custom slots, subcomponents and context override for organisms
 
 
