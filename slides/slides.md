@@ -192,11 +192,11 @@ It must be adapted to your needs and your domain.
 For example:
 
 
-| Type | Domain Specific | Business Logic | Genericity |
+| __Type__ | __Domain Specific__ | __Business Logic__ | __Genericity__  |
 |----------|------------------|-------|---------------------------|
-| Atoms | ✗ | ✗ | ✓ |
-| Molecules | ✓ | ✗ | ✓ |
-| Organisms | ✓ | ✓ | ✓ (but with a default variant) |
+| Atoms | ❌ | ❌ | ✅ |
+| Molecules | ✅ | ❌ | ✅ |
+| Organisms | ✅ | ✅ | ✅ (but with a default variant) |
 
 
 <div class="absolute left-30px bottom-30px">
@@ -295,7 +295,36 @@ export function Input({ renderEndDecorator: RenderEndDecorator }) {
 ```
 
 <strong style="display:block" v-click>Pros: function or component, interaction, flexibility</strong>
-<strong style="display:block" v-click>Cons: works for JSX, not for behaviours</strong>
+<strong style="display:block" v-click>Cons: works for JSX, not for behaviours only</strong>
+
+---
+layout: two-cols
+---
+
+# Why not using Context?
+
+```tsx
+function ClearButton() {
+  const [value, setValue] = useInputContext();
+  
+	//...
+}
+```
+
+Looks like a perfect idea!!
+
+⚠️ But it creates a strong link between the 2 components. `ClearButton` will be usable only with `Input`.
+
+Your components in your design system should be like __Lego bricks__.
+They should be __interchangeable__.
+
+> Keep contexts for large-scale patterns so you can the same context for all components.
+
+_Of course, it is not a universal rule._
+
+::right::
+
+<img src="/lego.png" alt="legos">
 
 ---
 
@@ -339,7 +368,7 @@ function useCreditCardProps() {
 
 ```
 
-<strong style="display:block" v-click>Pros: flexibility</strong>
+<strong style="display:block" v-click>Pros: flexibility, keep the components free of logic</strong>
 <strong style="display:block" v-click>Cons: maintainability, inconsistency when used too much</strong>
 
 <div class="absolute right-30px bottom-10px z-50">
@@ -387,12 +416,12 @@ url: http://localhost:5173/#/custom-slots?demo=1
 />
 ```
 
-<div className="absolute right-5 top-27 z-50 w-[280px] text-center">
+<div className="absolute right-5 top-35 z-50 w-[280px] text-center">
     <div class="h-10" v-mark="{ at: 1, color: 'orange', type: 'circle' }">
     </div>
 </div>
 
-Inspired from [Mui X](https://mui.com/x/react-date-pickers/custom-components/).
+Inspired from [Mui](https://mui.com/x/react-date-pickers/custom-components/).
 
 
 <strong style="display:block" v-click>Pros: targeted customization, overrides default variant</strong>
@@ -417,7 +446,7 @@ function Example() {
 	);
 }
 
-function CustomActionBar() {
+function CustomActionBar({ actions }) {
 	return (
 		<div className="flex items-center gap-3 justify-between">
 			{actions.map((action) => (
@@ -449,6 +478,18 @@ Very useful to apply specific behaviour or UI to a whole sub product (admin pane
 
 <strong style="display:block" v-click>Pros: You can override deep components</strong>
 <strong style="display:block" v-click>Cons: Cannot target a specific component, example: 2 actionBars</strong>
+
+---
+
+# When to use which pattern?
+
+| __Situation__ | __Pattern__ |
+|---|---|
+| Static UI slot, no interaction needed | Composition |
+| Child needs to read parent state | Render Prop |
+| Logic is reusable across features | Prop Getter |
+| Component needs a consistent default | Custom Slots |
+| Override needed deep in the tree | Context Override
 
 
 ---
