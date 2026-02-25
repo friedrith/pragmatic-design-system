@@ -313,7 +313,14 @@ function ClearButton() {
 
 Looks like a perfect idea!!
 
+<div v-click>
+
 ⚠️ But it creates a strong link between the 2 components. `ClearButton` will be usable only with `Input`.
+
+</div>
+
+<div v-click>
+
 
 Your components in your design system should be like __Lego bricks__.
 They should be __interchangeable__.
@@ -321,6 +328,8 @@ They should be __interchangeable__.
 > Keep contexts for large-scale patterns so you can the same context for all components.
 
 _Of course, it is not a universal rule._
+
+</div>
 
 ::right::
 
@@ -376,19 +385,22 @@ function useCreditCardProps() {
 </div>
 
 ---
-layout: cool-demo
-url: http://localhost:5173/#/organism?demo=1
----
 
-# Organism Paradigm
+<div class="flex items-stretch">
 
-Atoms & Molecules: __genericity__ using composition
+<div class="flex-1">
 
-But you cannot keep the same paradigm for all your components.
+# Change of Paradigm
 
-A lot of code duplication. Hard to maintain the consistency.
+Atoms & Molecules: __Genericity__
 
-Organisms: One default variant but with <strong class="legendary">customizable</strong> endpoints.
+But this genericity creates a lot of <strong class="legendary">duplication</strong>. It makes it hard to maintain the <strong class="legendary">consistency</strong>.
+
+You cannot keep the same paradigm for all your components.
+
+<div v-click>
+
+Organisms: One default variant but with __customizable__ endpoints.
 
 ```tsx
 <Calendar
@@ -396,6 +408,22 @@ Organisms: One default variant but with <strong class="legendary">customizable</
 	onDateChange={setSelected}
 />
 ```
+
+</div>
+</div>
+
+<iframe class="flex-1" v-click="1" src="http://localhost:5173/#/organism?demo=1" />
+
+<div class="absolute top-25 right-40 h-5 w-5"  v-mark="{ at: 1, color: 'orange', type: 'circle' }" />
+
+<div class="absolute top-25 right-95 h-5 w-5"  v-mark="{ at: 1, color: 'orange', type: 'circle' }" />
+
+
+<div class="absolute top-80 right-95 h-5 w-5"  v-mark="{ at: 1, color: 'orange', type: 'circle' }" />
+
+<div class="absolute top-82 right-65 h-5 w-5"  v-mark="{ at: 1, color: 'orange', type: 'circle' }" />
+
+</div>
 
 ---
 layout: cool-demo
