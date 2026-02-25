@@ -25,7 +25,7 @@ mdc: true
 
 ## Structuring your Design System without Designers
 
-<strong style="color: black">Thibault Friedrich</strong>
+<strong style="color: black">Thibault Friedrich - Confoo 2026</strong>
 
 <style>
 
@@ -35,13 +35,13 @@ mdc: true
 
 # About me: Thibault Friedrich
 
+- Currently Staff Software Developer at __Plusgrade__
 - Frontend developer for __12+ years__
 - Using __React__ for 8+ years and love it
 - Strong focus on Ux, Agile and Code craftsmanship
   - how to create usable products
-  - how to keep flexibility
   - how to write **Clean Code**
-- Implementing design systems for 4 years
+- Implementing design systems for 5+ years
 - Maintainer of [DesignSystemHub](https://design-system-hub.com) & [Features-cli](https://github.com/interaction-dynamics/features)
 
 <img src="/thibault-friedrich.png" class="absolute right-20 top-20 w-60 rounded-md">
@@ -147,10 +147,14 @@ __Good starting point__: a structure for your themes and base components.
 > If your company is larger, you may consider __Ant Design__ or __Tailwind__.
 
 ---
-layout: two-cols
----
 
-# Atomic Design
+# Step 2: Pragmatic Atomic Design
+
+<div class="flex items-start w-full">
+
+<div class="flex-1">
+
+In theory:
 
 - atoms
 - molecules
@@ -158,15 +162,21 @@ layout: two-cols
 - templates
 - pages
 
-Cool in theory.
-
 But a Design system is not a **one-size-fits-all** solution.
 
 It must be adapted to your needs and your domain.
 
-::right::
+
+</div>
+
+<div class="relative flex-1">
+
 
 <img src="/atomic-design.png" alt="Atomic Design" class="w-[90%] mx-10" />
+
+</div>
+
+</div>
 
 
 ---
@@ -182,7 +192,7 @@ It must be adapted to your needs and your domain.
 For example:
 
 
-| Type | Domain Specific | Business Logic | Infinite Variants |
+| Type | Domain Specific | Business Logic | Genericity |
 |----------|------------------|-------|---------------------------|
 | Atoms | ✗ | ✗ | ✓ |
 | Molecules | ✓ | ✗ | ✓ |
@@ -204,7 +214,6 @@ Find the React Patterns to support a good balance between flexibility and consis
 
 - __atoms__: UI & primitive components, very flexible
   - Composition
-  - React slots pattern
   - Render prop
   
 <div v-click>  
@@ -257,58 +266,6 @@ function Input({ endDecorator }) {
 
 ---
 layout: cool-demo
-url:  http://localhost:5173/#/react-slots?demo=1
----
-
-# React Slots pattern
-
-Smart composition leveraging `children`.
-
-```tsx
-function Example() {
-	return (
-		<Input>
-			<InputStartDecorator>
-				<EnvelopeIcon className="h-8 w-8" />
-			</InputStartDecorator>
-			<InputEndDecorator>
-				<button className="button" type="button">
-					<XCircleIcon className="h-8 w-8" />
-				</button>
-			</InputEndDecorator>
-		</Input>
-	);
-}
-
-function Input({ children }: InputProps) {
- 	const startDecorator = Children.toArray(children).find(
-		(child) => child.type === InputStartDecorator,
-	);
-	const endDecorator = Children.toArray(children).find(
-		(child) => child.type === InputEndDecorator,
-	);
-
-	return (
-		<div className="input-container">
-			{startDecorator}
-			<input className="input" />
-			{endDecorator}
-		</div>
-	);
-}
-```
-
-Very adapted for Modals, Card, etc. Similar to Slots in Vue.js
-
-<style>
-.slidev-code {
-  overflow: auto;
-  max-height: 25vh!important;
-}
-</style>
-
----
-layout: cool-demo
 url:  http://localhost:5173/#/render-component-prop?demo=1
 ---
 
@@ -345,7 +302,6 @@ export function Input({ renderEndDecorator: RenderEndDecorator }) {
 # Inversion of Control
 
 - Composition
-- React Slots
 - Render Prop
 
 We removed the logic from the **atoms** and **molecules** to keep the components generic using inversion of control (SOLID).
@@ -530,8 +486,8 @@ layout: two-cols
 
 <div class="text-center flex flex-col items-center">
 
-<img src="/qr-code.svg" class="h-60 w-60" alt="repository" />
+<img src="/feedbacks.svg" class="h-60 w-60" alt="repository" />
 
-Repository
+Feedbacks
 
 </div>
