@@ -26,6 +26,7 @@ Several versions of this project are available:
 
 - [First version](https://github.com/friedrith/pragmatic-design-system/tree/2025-react-montreal-meetup) presented at the React Montreal Meetup in 2025.
 - [Second version](https://github.com/friedrith/pragmatic-design-system/tree/2025-dev-mtl) presented at /dev/mtl in 2025.
+- [Third version](https://github.com/friedrith/pragmatic-design-system/tree/2026-confoo) presented at Confoo Conference in 2026.
 
 ## License
 
